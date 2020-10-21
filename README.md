@@ -30,10 +30,10 @@ Following the article here https://docs.microsoft.com/en-us/azure/app-service/co
 ```
 
 In the web app configuration a custom application setting was added:
-![Web App for Containers settings](https://github.com/jometzg/classicaspdocker/edit/master/appsettings.png)
+![Web App for Containers settings](https://github.com/jometzg/classicaspdocker/master/appsettings.png)
 
 When the web page is displayed, you can see this has been picked up.
-![Picked up by code](https://github.com/jometzg/classicaspdocker/edit/master/onpage.png)
+![Picked up by code](https://github.com/jometzg/classicaspdocker/master/onpage.png)
 
 APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string
 
