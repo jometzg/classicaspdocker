@@ -37,3 +37,5 @@ When the web page is displayed, you can see this has been picked up.
 
 As can be seen, the value _APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string_ gets correctly injected into the container. This will allow connection strings and other settings to be injected into the application. 
 
+## Other samples
+Here is a repo https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples with a large number of sample Dockerfiles which may be used as a starting point for containerising Windows-based workloads.
