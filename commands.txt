@@ -1,0 +1,20 @@
+In my case i am using following names , please change according to your requirements
+Registry Name  = [classicasp.azurecr.io/aspclassic:latest]
+Image Name = [aspclassic]
+
+go to the src folder and Build the image . [aspclassic] is the name of container, you can change accordinlgy
+docker build -t aspclassic -f dockerfile .
+
+run the image locally
+docker run -d -p 8086:80 --name aspclassicapp aspclassic
+
+Steps to push the image to Azure
+Following command will log you into potral
+az login
+
+Login to Azure Container Registry
+az acr login --name [Registry Name Here]
+
+Tag The image with following command
+docker tag aspclassic classicasp.azurecr.io/aspclassic:latest
+docker push classicasp.azurecr.io/aspclassic:latest
