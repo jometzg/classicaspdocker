@@ -35,5 +35,5 @@ In the web app configuration a custom application setting was added:
 When the web page is displayed, you can see this has been picked up.
 ![Picked up by code](https://github.com/jometzg/classicaspdocker/blob/master/onpage.png)
 
-APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string
+As can be seen, the value _APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string_ gets correctly injected into the container. This will allow connection strings and other settings to be injected into the application. 
 
