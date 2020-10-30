@@ -44,10 +44,10 @@ RUN & c:\windows\system32\inetsrv\appcmd.exe `
 	  
 	  	  
 
-RUN Add-OdbcDsn -Name "GISSQL_DB" `
+RUN Add-OdbcDsn -Name "Air_DSR" `
                 -DriverName "\"ODBC Driver 13 For SQL Server\"" `
                 -DsnType "System" ` 
-                -SetPropertyValue @("\"Server=connectionstring\"", "\"Trusted_Connection=No\"");
+                -SetPropertyValue @("\"Server=jjmodtest.database.windows.net\"", "\"Trusted_Connection=No\"");
 
 
 ADD . c:\mywebsite

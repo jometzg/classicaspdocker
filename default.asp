@@ -17,7 +17,25 @@
 </style>
 
 <body>
-
+<%
+CONFIG_FILE_PATH="web.config"  
+Function GetConfigValue(sectionName, attrName)
+    Dim oXML, oNode, oChild, oAttr, dsn
+    Set oXML=Server.CreateObject("Microsoft.XMLDOM")
+    oXML.Async = "false"
+    oXML.Load(Server.MapPath(CONFIG_FILE_PATH))
+    Set oNode = oXML.GetElementsByTagName(sectionName).Item(0) 
+    Set oChild = oNode.GetElementsByTagName("add")
+    ' Get the first match
+    For Each oAttr in oChild 
+        If  oAttr.getAttribute("key") = attrName then
+            dsn = oAttr.getAttribute("value")
+            GetConfigValue = dsn
+            Exit Function
+        End If
+    Next
+End Function  
+%>  
   <!--#include file='header.asp'-->
 
   <!-- Page content -->
@@ -26,24 +44,31 @@
 
     <!-- The Band Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-      <h2 class="w3-wide">THE SITE</h2>
-      <p class="w3-opacity"><i>SYSTEM</i></p>
-      <p class="w3-opacity"><i>
-        <%
-        Set objWSH =  CreateObject("WScript.Shell")
-        Set objSystemVariables = objWSH.Environment("SYSTEM")
-        For Each strItem In objSystemVariables
-            response.write("<p>" & strItem & "</p>")
-        Next
+      <h2 class="w3-wide">Classic ASP Test Page</h2>
+      <h2 class="w3-wide">Windows Container</h2>
+      <p class="w3-opacity"><i>web.config</i></p>
+      <%
+        settingValue = GetConfigValue("appSettings", "APPSETTING_JM_TEST_APPSETTING")
+        Response.Write(settingValue)
         %>
-        <p class="w3-opacity"><i>USER</i></p>
-        <%
-        Set objSystemVariables = objWSH.Environment("USER")
-        For Each strItem In objSystemVariables
-            response.write("<p>" & strItem & "</p>")
-        Next
-        %>
-      </i></p>
+      <p></p>
+      <%
+      Dim objConn
+      Set objConn = Server.CreateObject("ADODB.Connection")
+      objConn.open("DSN=Air_DSR;UID=jjtestmod;PWD={password};DATABASE=Air_DASR")
+      Set objCmd = Server.CreateObject("ADODB.Command")
+      objCmd.CommandText = "SELECT * FROM dbo.person"
+      objCmd.ActiveConnection = objConn
+
+      Set objRS = objCmd.Execute
+
+      Do While Not objRS.EOF
+        %><%= objRS("FirstName") %><br><%
+        objRS.MoveNext()
+      Loop
+      'conn.open("Provider=MSOLEDBSQL;Data Source=tcp:jjmodtest.database.windows.net,1433;Initial Catalog=myDatabase;Authentication=SqlPassword;User ID=jjtestmod;Password=Superseven07;Use Encryption for Data=true;")
+      %>	
+
       <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing
         elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco laboris nisi ut aliquip
