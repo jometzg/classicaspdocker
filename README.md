@@ -66,6 +66,7 @@ Dim objConn
       Loop
 ```
 In the above, I had a sample table "person" in the database with a few rows of data.
+![SQL query results](https://github.com/jometzg/classicaspdocker/blob/master/sqlresults.png)
 
 ## Other samples
 Here is a repo https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples with a large number of sample Dockerfiles which may be used as a starting point for containerising Windows-based workloads.
