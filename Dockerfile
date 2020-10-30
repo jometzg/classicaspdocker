@@ -44,10 +44,10 @@ RUN & c:\windows\system32\inetsrv\appcmd.exe `
 	  
 	  	  
 
-RUN Add-OdbcDsn -Name "Air_DSR" `
+RUN Add-OdbcDsn -Name "SampleDSN" `
                 -DriverName "\"ODBC Driver 13 For SQL Server\"" `
                 -DsnType "System" ` 
-                -SetPropertyValue @("\"Server=jjmodtest.database.windows.net\"", "\"Trusted_Connection=No\"");
+                -SetPropertyValue @("\"Server=servername.database.windows.net\"", "\"Trusted_Connection=No\"");
 
 
 ADD . c:\mywebsite
