@@ -126,5 +126,35 @@ Dim objConn
 In the above, I had a sample table "person" in the database with a few rows of data.
 ![SQL query results](https://github.com/jometzg/classicaspdocker/blob/master/sqlresults.png)
 
+## Building the app
+In my case i am using following names , please change according to your requirements
+Registry Name  = [classicasp.azurecr.io/aspclassic:latest]
+Image Name = [aspclassic]
+
+go to the src folder and Build the image . [aspclassic] is the name of container, you can change accordinlgy
+```
+docker build -t aspclassic -f dockerfile .
+```
+run the image locally
+```
+docker run -d -p 8086:80 --name aspclassicapp aspclassic
+```
+
+Steps to push the image to Azure
+Following command will log you into potral
+```
+az login
+```
+Login to Azure Container Registry
+```
+az acr login --name [Registry Name Here]
+```
+Tag The image with following command
+```
+docker tag aspclassic classicasp.azurecr.io/aspclassic:latest
+docker push classicasp.azurecr.io/aspclassic:latest
+```
+Then deploy a Web App for Containers, pointing to the container images you just uploaded!
+
 ## Other samples
 Here is a repo https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples with a large number of sample Dockerfiles which may be used as a starting point for containerising Windows-based workloads.
