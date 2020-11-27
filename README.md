@@ -95,6 +95,16 @@ When the web page is displayed, you can see this has been picked up.
 
 As can be seen, the value _APPSETTING_DATABASE_CONNECTION_STRING=this_is_the_connection_string_ gets correctly injected into the container. This will allow connection strings and other settings to be injected into the application. 
 
+## Getting a specific environment variable
+
+The above code iterates through the set of environment variables. If there is a need to get a specific environment variable, the code will look like:
+
+```
+Set objWSH =  CreateObject("WScript.Shell")
+conn.open(objWSH.ExpandEnvironmentStrings("%APPSETTING_DSN%"))
+```
+In the above a web application setting *DSN* is being accessed as *APPSETTING_DSN* and used (in this case) as a connection string to a database connection.
+
 ## Accessing an Azure SQL Database
 It's often the case that an application need to access an SQL database. For migration to Azure, Azure SQL database is a really good option. This section covers how to setup the database driver so that ADODB code can use an Azure SQL database.
 
