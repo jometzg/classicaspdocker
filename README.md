@@ -119,9 +119,10 @@ This creates a DSN named "SampleDSN".
 
 In the ASP code on the page, this DSN is then used to access the database:
 ```
-Dim objConn
+      Dim objConn
       Set objConn = Server.CreateObject("ADODB.Connection")
-      objConn.open("DSN=SampleDSN;UID={username};PWD={password};DATABASE=the-database-name")
+      Set objWSH =  CreateObject("WScript.Shell")
+      objConn.open(objWSH.ExpandEnvironmentStrings("%APPSETTING_DSN%"))
       Set objCmd = Server.CreateObject("ADODB.Command")
       objCmd.CommandText = "SELECT * FROM dbo.person"
       objCmd.ActiveConnection = objConn
@@ -133,7 +134,8 @@ Dim objConn
         objRS.MoveNext()
       Loop
 ```
-In the above, I had a sample table "person" in the database with a few rows of data.
+In the above, I had a sample table "person" in the database with a few rows of data. Note we have injected the connection string in the web app settings - as described previously.
+
 ![SQL query results](https://github.com/jometzg/classicaspdocker/blob/master/sqlresults.png)
 
 ## Building the app
