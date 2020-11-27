@@ -15,6 +15,8 @@ This is an updated version of this repo https://github.com/ImranMA/CodeSamples/t
 FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
 SHELL ["powershell", "-command"]
 
+ENV APPSETTING_DSN='parameterise this'
+
 RUN Install-WindowsFeature Web-ASP; `
     Install-WindowsFeature Web-CGI; `
     Install-WindowsFeature Web-ISAPI-Ext; `
@@ -64,6 +66,7 @@ RUN Add-OdbcDsn -Name "SampleDSN" `
 
 ADD . c:\mywebsite
 ```
+Note that it does appear that you do not need to declare the *ENV* in the Dockerfile as would be the case for Linux containers. But is is probably best to declare this in case this changes for Windows containers in Web App for Containers.
 
 ## Environment variables
 Following the article here https://docs.microsoft.com/en-us/azure/app-service/configure-custom-container?pivots=container-windows#configure-environment-variables some code was added to the asp page to enumerate the environment variables:
