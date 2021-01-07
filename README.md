@@ -155,6 +155,12 @@ run the image locally
 docker run -d -p 8086:80 --name aspclassicapp aspclassic
 ```
 
+if you need to 'inject' environment variables into a docker run, here's how:
+```
+docker run -d -p 8086:80 --env APPSETTING_DSN=the-complete-connection-string  --name aspclassicapp aspclassic
+```
+It should be noted that quoting the connection string may not be necessary, if there are no spaces. Use of single quotes **'** may cause the quotes to be injected too - making the connection string invalid.
+
 Steps to push the image to Azure
 Following command will log you into potral
 ```
