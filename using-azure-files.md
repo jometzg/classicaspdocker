@@ -58,7 +58,7 @@ The simplest way to validate that application file uploads work correctly is to 
 
 ![storage explorer portal](/storage-explorer-portal.png)
 
-You can, of course, use the storage epxlorer application too.
+You can, of course, use the storage explorer application too.
 
 
 ## Summary
