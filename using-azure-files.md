@@ -43,6 +43,23 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 ```
 In the portal:
 This can be found in the app service *Configuration* section and then under *Path Mappings*
+![Path Mappings](/mount-storage-web-app-overview.png)
+
+Pressing the **+ New Azure Storage Mount** will allow you to fill in the details of the Azure files share and where it will be mounted in the container:
+
+![Add a file mount](/mount-storage-web-app.png)
+
+The file mount path needs to be chosen so this matches where the application code would upload files. If the original container was built with this in the path, then it would be best to remove this from the container build and then all non-static files should be uploaded to the Azure file share.
+
+For example, if your application has a folder **images**, where most of the contents are static images, but there is a sub-folder **uploads**, then it may be best to keep the static images in the container, but to map the **uploads** folder to the Azure file share and then put any existing images in that folder.
+
+### Validating this works correctly
+The simplest way to validate that application file uploads work correctly is to perform a file upload in your application (once deployed to web app for containers) and then to use the Azure portal to inspect the contents of the file share:
+
+![storage explorer portal](/storage-explorer-portal.png)
+
+You can, of course, use the storage epxlorer application too.
 
 
-
+## Summary
+Newly created files inside a container will not survive a container restart - by design. So action need to be taken to handle file uploads. This article has shown how a *volume* may be attached to a container at development time and then later how Azure files may be used with *path mappings* in web app for containers to create a permanent destination for file uploads - all without needing to change your application code!
