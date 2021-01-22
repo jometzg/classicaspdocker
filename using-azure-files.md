@@ -28,11 +28,19 @@ Azure storage is the best destination for files. Azure storage has both blob sto
 
 ### Steps
 1. Create a file share
-2. Mount the share in Web App for Containers
-3. Use storage tools to validate that files are persisted.
+2. Move the files that you will be putting in file share elsewhere - so they are no longer included in the container build. 
+3. Copy the above files into the Azure file share.
+4. Mount the share in Web App for Containers
+5. Use storage tools to validate that files are persisted.
 
 ## Create a file share
 This can be created in the portal and must be done against a storage account.
+
+## Move the files away from the container
+If your application already has files in a folder inside the container, you will need to move these outside the container, so they are no longer part of the container build. It is usually best to move these to a folder *above* the folder with the Dockerfile, so you can later mount this folder into the container for local *docker run* sessions.
+
+## Copy the above files into the Azure files share
+The Azure portal now has a version of storage explorer built in and this may be used to copy any files needed into the Azure files share.
 
 ## Mount Share in Web App for Containers
 This can either be done with some CLI or can be done in the portal.
