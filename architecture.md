@@ -1,8 +1,8 @@
-This reference architecture shows proven practices for improving scalability and performance in an Azure App Service web application.
+This reference architecture shows how "Classic ASP" applications can be migrated to Azure simply by putting it into a Windows Docker container and then hosting Azure App Service  - Web App for Containers.
 
 ![GitHub logo](../../_images/github.png) A reference implementation for this architecture is available on [GitHub][github].
 
-![Web application in Azure with improved scalability](./images/scalable-web-app.png)
+![Azure Web App for Containers](./images/web-app-for-containers.png)
 
 *Download a [Visio file][visio-download] of this architecture.*
 
