@@ -2,7 +2,7 @@ This reference architecture shows how "Classic ASP" applications can be migrated
 
 ![Azure Web App for Containers](./images/web-app-for-containers.png)
 
-*Download a [Visio file][visio/web-app-for-containers.vsdx] of this architecture.*
+*Download a [Visio file][./visio/web-app-for-containers.vsdx] of this architecture.*
 
 ## Architecture
 
