@@ -1,10 +1,8 @@
 This reference architecture shows how "Classic ASP" applications can be migrated to Azure simply by putting it into a Windows Docker container and then hosting Azure App Service  - Web App for Containers.
 
-![GitHub logo](../../_images/github.png) A reference implementation for this architecture is available on [GitHub][github].
-
 ![Azure Web App for Containers](./images/web-app-for-containers.png)
 
-*Download a [Visio file][visio-download] of this architecture.*
+*Download a [Visio file][visio/web-app-for-containers.vsdx] of this architecture.*
 
 ## Architecture
 
