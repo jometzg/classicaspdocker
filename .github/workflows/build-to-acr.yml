@@ -16,7 +16,7 @@ jobs:
     # Checks out repository so your workflow can access it
     - uses: actions/checkout@v1
 
-    # Authenticate a Service Principal to deploy to your Web App
+    # Authenticate a Service Principal to deploy to your Web App (not used for the moment)
     - name: Azure Service Principal Authentication
       uses: azure/login@v1
       with:
