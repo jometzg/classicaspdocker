@@ -36,7 +36,7 @@ jobs:
           # Service Principal password
           service_principal_password: ${{ secrets.service_principal_password }}
           # Azure Container Registry tenant
-          tenant: 72f988bf-86f1-41af-91ab-2d7cd011db47
+          tenant: ${{ secrets.tenant }}
           # The name of the ACR, minus the .azurecr.io
           registry: jjnews
           # Repository to use
