@@ -41,6 +41,6 @@ jobs:
     - name: Deploy Container to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
-        app-name: jjtestaspclassic2
+        app-name: jjtestaspclassic2 
         images: jjnews.azurecr.io/classicasp:4230eaeaf812e977b8de07796672ed136b6576bf
         
