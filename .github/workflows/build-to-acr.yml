@@ -39,7 +39,7 @@ jobs:
         
      # Deploy your container to App Service 
     - name: Deploy Container to Azure App Service
-      uses: azure/webapps-container-deploy@v2
+      uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ secrets.APP_NAME }}
         images: ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
