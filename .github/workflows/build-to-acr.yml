@@ -61,7 +61,7 @@ jobs:
              }
          ]
          
-     # Deploy your container to App Service 
+     # Deploy your container to App Service (web app for containers)
     - name: Deploy Container to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
