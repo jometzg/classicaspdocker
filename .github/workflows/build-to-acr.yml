@@ -36,3 +36,10 @@ jobs:
       run: |
         docker build --file=./Dockerfile -t ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }} .
         docker push ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}  
+        
+     # Deploy your container to App Service 
+    - name: Deploy Container to Azure App Service
+      uses: azure/webapps-container-deploy@v1
+      with:
+        app-name: ${{ secrets.APP_NAME }}
+        images: ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
