@@ -36,7 +36,31 @@ jobs:
       run: |
         docker build --file=./Dockerfile -t ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }} .
         docker push ${{ secrets.CONTAINER_REGISTRY_NAME }}/${{ secrets.IMAGE_NAME }}:${{ github.sha }}  
-        
+    
+    # Need to set this in the app if a private repo (which ACR is)
+    - name: Set Web App ACR authentication
+      uses: Azure/appservice-settings@v1
+      with:
+       app-name: ${{ secrets.APP_NAME }}
+       app-settings-json: |
+         [
+             {
+                 "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                 "value": "${{ secrets.CONTAINER_REGISTRY_PASSWORD }}",
+                 "slotSetting": false
+             },
+             {
+                 "name": "DOCKER_REGISTRY_SERVER_URL",
+                 "value": "https://${{ secrets.CONTAINER_REGISTRY_NAME }}",
+                 "slotSetting": false
+             },
+             {
+                 "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                 "value": "${{ secrets.CONTAINER_REGISTRY_USERNAME  }}",
+                 "slotSetting": false
+             }
+         ]
+         
      # Deploy your container to App Service 
     - name: Deploy Container to Azure App Service
       uses: azure/webapps-deploy@v2
