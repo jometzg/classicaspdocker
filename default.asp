@@ -44,7 +44,7 @@ End Function
 
     <!-- The Band Section -->
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-      <h2 class="w3-wide">Classic ASP Test Page v2</h2>
+      <h2 class="w3-wide">Classic ASP Test Page v3</h2>
       <h2 class="w3-wide">Windows Container</h2>
       <p class="w3-opacity"><i>web.config</i></p>
       <%
